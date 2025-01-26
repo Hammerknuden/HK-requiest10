@@ -1,14 +1,26 @@
 import streamlit as st
-import pandas as pd
+from datetime import datetime, date
+from pathlib import Path
+import numpy as np
+#from confirmation_email import (admin_email, send_danish_confirmation_email, send_english_confirmation_email,
+                                #send_german_confirmation_email)
+#from excel_database import add_data
+from PIL import Image, ImageDraw, ImageFont
+from io import BytesIO
+import base64
 
-st.header("velkommen til Hammerknuden Sommerpension")
 
-st.image("logo2")
+st.subheader("Velkommen til")
+st.title("**HAMMERKNUDEN SOMMERPENSION**")
 
-sprog = st.selectbox("sprog", options=["dansk"])
+st.image("logo2.jpg")
+
+sprog = st.selectbox("Vælg sprog, Select language, Wählen Sie Sprache aus", options=["dansk"])
 
 if sprog == "dansk":
-    st.text("Send en forespørgelse til Hammerknuden Sommerpension")
+    st.text("Send en booking forespørgelse til Hammerknuden Sommerpension")
+    st.text("En forespørgelse vil normalt bliver besvaret/bekræftet inden for 12 timer")
+
     st.text("Kontaktoplysninger")
 
     navn = st.text_input("navn  ")
@@ -16,8 +28,8 @@ if sprog == "dansk":
     email = st.text_input("Email adresse you@domain.dk  ")
 
     st.subheader("Hvilke ønsker har du ??  ")
-    indcheck = st.date_input("ønsket ankomst dato: ")
-    checkout = st.date_input("ønsket afrejse dato: ")
+    checkin_date = st.date_input("ønsket ankomst dato: ")
+    checkout_date = st.date_input("ønsket afrejse dato: ")
 
     enkelt = st.checkbox("ønskes enkeltværelse ( 1 person )  ")
     mad = st.checkbox("ønskes morgenmad under opholdet")
@@ -27,8 +39,71 @@ if sprog == "dansk":
     antal = st.number_input("antal væreser i alt:", value=1, step=1)
     personer = st.number_input("Antal personer ialt:", value=2, step=1)
 
-    st.text(" Hammerknuden kan tilbyde endten dobbltseng eller enkeltsenge efter ønske")
+    st.text(" Hammerknuden kan tilbyde endten dobbeltseng eller enkeltsenge efter ønske")
     st.selectbox("type af seng", options=["dobbeltseng", "enkeltsenge"])
+
+# calculations and data
+    if enkelt:
+        high_season_price = 950  # 2025 950
+        low_season_price = 830  # 2025 830
+        single_room = "Y"
+    else:
+        high_season_price = 1050  # 2025 1050
+        low_season_price = 930  # 2025 930
+        single_room = "N"
+    st.markdown(high_season_price)
+    st.markdown(low_season_price)
+
+bf_price = 100
+rabat = 5 #online rabat sat til 5%
+
+high_season_start = datetime.strptime("29-06-25", _format := "%d-%m-%y").date()
+high_season_end = datetime.strptime("26-08-25", _format := "%d-%m-%y").date()
+
+high_season_days = high_season_end - high_season_start
+high_booking = (checkin_date >= high_season_start) and (checkout_date <= high_season_end)
+low_booking = ((checkin_date <= high_season_start) and (checkout_date < high_season_start)) or (checkin_date >
+                                                                                                    high_season_end)
+mixbooking_early = (checkin_date < high_season_start) and (checkout_date > high_season_start)
+mixbooking_end = (checkout_date > high_season_end) and (high_season_start < checkin_date) and (checkin_date <
+                                                                                                   high_season_end)
+days = checkout_date - checkin_date
+
+high_season_days = high_season_end - high_season_start
+mixearly = checkout_date - high_season_start
+mixearly_b = high_season_start - checkin_date
+mixend = high_season_end - checkin_date
+mixend_b = checkout_date - high_season_end
+
+if high_booking:
+    pris = (high_season_price * int(days.days)) * int(antal)
+if low_booking:
+    pris = (low_season_price * int(days.days)) * int(antal)
+if mixbooking_early:
+    pris = (((int(mixearly.days) * high_season_price) + (int(mixearly_b.days) * low_season_price)) * int(num_rooms))
+if mixbooking_end:
+    pris = (high_season_price * (int(mixend.days)) + (int(mixend_b.days) * low_season_price)) * int(num_rooms)
+
+if mad:
+    bf_t = (days.days * int(bf_price) * int(personer))
+else:
+    bf_t = 0
+st.markdown(bf_t)
+rabat_a = int(rabat) / 100
+rabat_b = bf_t * rabat_a
+rabat_r = pris * rabat_a
+rabat_t = rabat_b + rabat_r
+
+#st.markdown(rabat_t)
+
+pris_tot = pris - rabat_t
+st.markdown(f"**Antal Dage i denne booking**, {days.days}")
+st.markdown(f"**Foreløbig pris denne reservation med 5 % online rabat** {pris_tot:.2f}kr")
+print(pris)
+
+print(days.days)
+
+
 
 
 
