@@ -24,7 +24,7 @@ def send_email(confirmation_password, email):
 
 
 def danish_email_html_template(logo_cid, navn, antal, personer, checkin_date, checkout_date,
-                               text_bf, text_bed, text_free):
+                               text_bf, text_bed, text_free, pris_tot):
     return f"""<html>        <html style="display: table; margin: auto;">
         <head>
             <meta charset="UTF-8" />
@@ -55,11 +55,12 @@ def danish_email_html_template(logo_cid, navn, antal, personer, checkin_date, ch
             <table>
                 <tr>
                     <td>{text_bf}</td>
+                    <p> {text_bed} </p>
+                    <p>{text_free} </p<
                     <td><span style=float:right> -- </style></td>
                 </tr>
-                          
-                <p> {text_bed} </p>
-                <p> {text_free} </p>
+            <hr>          
+                
                 <p> Opholdet er foreløbigt beregnet til {pris_tot:.2}kr inklusiv 5% onlinerabat.
             <hr>
             </p>
