@@ -2,8 +2,7 @@ import streamlit as st
 from datetime import datetime, date
 from pathlib import Path
 import numpy as np
-#from confirmation_email import (admin_email, send_danish_confirmation_email, send_english_confirmation_email,
-                                #send_german_confirmation_email)
+from confirmation_email import (admin_email, send_danish_confirmation_email)
 #from excel_database import add_data
 from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
@@ -33,15 +32,27 @@ if sprog == "dansk":
 
     enkelt = st.checkbox("ønskes enkeltværelse ( 1 person )  ")
     mad = st.checkbox("ønskes morgenmad under opholdet")
+    if mad:
+        text_bf = "Morgenmad er inkluderet"
+    else:
+        text_bf = "Morgenmad er ikke inkluderet"
 
     st.text("Der kan bo 2 personer i hvert rum ")
 
     antal = st.number_input("antal væreser i alt:", value=1, step=1)
     personer = st.number_input("Antal personer ialt:", value=2, step=1)
 
-    st.text(" Hammerknuden kan tilbyde endten dobbeltseng eller enkeltsenge efter ønske")
-    st.selectbox("type af seng", options=["dobbeltseng", "enkeltsenge"])
-
+    st.text(" Hammerknuden kan tilbyde enten dobbeltseng eller enkeltsenge efter ønske")
+    seng = st.selectbox("type af seng", options=["dobbeltseng", "enkeltsenge"])
+    if seng == "dobbeltseng":
+        text_bed = "Der er valgt dobbetseng "
+    else:
+        text_bed = "Der er valgt enkeltsenge  "
+    extext = st.checkbox("ekstra information eller forespørgelse")
+    if extext:
+        text_free = st.text_input("Skriv ønsker eller yderligere information  ")
+    else:
+        text_free = st.text("-")
 # calculations and data
     if enkelt:
         high_season_price = 950  # 2025 950
@@ -51,8 +62,10 @@ if sprog == "dansk":
         high_season_price = 1050  # 2025 1050
         low_season_price = 930  # 2025 930
         single_room = "N"
-    st.markdown(high_season_price)
-    st.markdown(low_season_price)
+print(high_season_price)
+print(low_season_price)
+#st.markdown(high_season_price)
+#st.markdown(low_season_price)
 
 bf_price = 100
 rabat = 5 #online rabat sat til 5%
@@ -88,12 +101,13 @@ if mad:
     bf_t = (days.days * int(bf_price) * int(personer))
 else:
     bf_t = 0
-st.markdown(bf_t)
+print(bf_t)
+#st.markdown(bf_t)
 rabat_a = int(rabat) / 100
 rabat_b = bf_t * rabat_a
 rabat_r = pris * rabat_a
 rabat_t = rabat_b + rabat_r
-
+print(rabat_t)
 #st.markdown(rabat_t)
 
 pris_tot = pris - rabat_t
@@ -102,6 +116,16 @@ st.markdown(f"**Foreløbig pris denne reservation med 5 % online rabat** {pris_t
 print(pris)
 
 print(days.days)
+
+
+to_addr = [email, admin_email]
+confirmation_password = "Pc2024Bonv"
+booking_submitted = st.button("Send forespørgelse")
+st.text("Forespørgelse sendt !")
+
+
+
+
 
 
 
