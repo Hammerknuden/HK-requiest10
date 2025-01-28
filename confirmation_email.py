@@ -69,8 +69,8 @@ def danish_email_html_template(logo_cid, navn, antal, personer, checkin_date, ch
             mail@hammerknuden.dk - +45 56481750  (call only)<br>
             Mobil pay - 133565 or Danske Bank reg 4720 kt 4720758679</align></p></p>
         </body>
-        </html>
-        """
+    </html>
+    """
 
 
 def send_danish_confirmation_email(to_addr, confirmation_password, name, antal, personer,
