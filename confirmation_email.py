@@ -23,7 +23,7 @@ def send_email(confirmation_password, email):
         server.send_message(email)
 
 
-def danish_email_html_template(logo_cid, navn, antal, personer, checkin_date, checkout_date,
+def danish_email_html_template(logo_cid, to_addr, navn, antal, personer, checkin_date, checkout_date,
                                text_bf, text_bed, text_free, pris_tot):
     return f"""<html>        <html style="display: table; margin: auto;">
         <head>
@@ -80,16 +80,19 @@ def send_danish_confirmation_email(to_addr, confirmation_password, name, antal, 
     logo_cid = make_msgid()
     html_content = danish_email_html_template(logo_cid[1:-1], name, antal, personer, checkin_date,
                                               checkout_date, text_bf, text_bed, text_free, pris_tot)
-    # construct email
+
+
+# construct email
     email = EmailMessage()
 
-    email['Subject'] = Subject + f" #{checkin_date}"
+    email['Subject'] = Subject
     email['From'] = sender_email
-    email['To'] = to_addr
+    email['To'] = [to_addr]
     email.set_content("Email client does not support html content")
     email.add_alternative(html_content, subtype='html')
 
-    with open(logo_path, 'rb') as img:
-        email.get_payload()[0].add_related(img.read(), 'image', 'jpeg', cid=logo_cid)
+
+with open(logo_path, 'rb') as img:
+    email.get_payload()[0].add_related(img.read(), 'image', 'jpeg', cid=logo_cid)
 
     send_email(confirmation_password, email)

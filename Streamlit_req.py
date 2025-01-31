@@ -118,8 +118,8 @@ print(pris)
 print(days.days)
 
 
-to_addr = ({email}, [admin_email]), 'finnjorg@mail.dk'
-confirmation_password = st.text_input("Pc2024Bonv")
+to_addr = email #'finnjorg@gmail.com'   #[admin_email]  #email'finnjorg@mail.dk'
+confirmation_password = st.text_input("pc0012hk") #Pc2024Bonv
 booking_submitted = st.button("Send forespørgelse")
 
 
