@@ -2,12 +2,10 @@ import streamlit as st
 from datetime import datetime, date
 from pathlib import Path
 import numpy as np
-from confirmation_email import (admin_email, send_danish_confirmation_email)
-#from excel_database import add_data
+#from confirmation_email import (admin_email, send_danish_confirmation_email)
 from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
 import base64
-
 
 st.subheader("Velkommen til")
 st.title("**HAMMERKNUDEN SOMMERPENSION**")
@@ -121,6 +119,12 @@ print(days.days)
 to_addr = email #'finnjorg@gmail.com'   #[admin_email]  #email'finnjorg@mail.dk'
 confirmation_password = st.text_input("pc0012hk") #Pc2024Bonv
 booking_submitted = st.button("Send forespørgelse")
+if booking_submitted:
+    send_danish_confirmation_email(to_addr, confirmation_password, navn, antal, personer, checkin_date, checkout_date,
+                                   text_bf, text_bed, text_free, pris_tot)
+    st.markdown('forespørgelse er afsendt dette windue kan lukkes')
+else:
+    st.markdown('forespørgelsen ikke sendt, sendt mail direkte til mail@hammerknuden.dk')
 
 
 
