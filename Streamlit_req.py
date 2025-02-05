@@ -1,8 +1,11 @@
+import streamlit
 import streamlit as st
+import pandas as pd
 from datetime import datetime, date
 from pathlib import Path
+
 import numpy as np
-#from confirmation_email import (admin_email, send_danish_confirmation_email)
+from confirmation_email import (admin_email, send_danish_confirmation_email, send_german_confirmation_email)
 from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
 import base64
@@ -22,7 +25,7 @@ if sprog == "dansk":
 
     navn = st.text_input("navn  ")
     telefon = st.text_input("Telefonnummer  ")
-    email = st.text_input("Email adresse you@domain.dk  ")
+    email_address = st.text_input("Email adresse you@domain.dk  ")
 
     st.subheader("Hvilke ønsker har du ??  ")
     checkin_date = st.date_input("ønsket ankomst dato: ")
@@ -37,8 +40,8 @@ if sprog == "dansk":
 
     st.text("Der kan bo 2 personer i hvert rum ")
 
-    antal = st.number_input("antal væreser i alt:", value=1, step=1)
-    personer = st.number_input("Antal personer ialt:", value=2, step=1)
+    num_rooms = st.number_input("antal væreser i alt:", value=1, step=1)
+    num_personer = st.number_input("Antal personer ialt:", value=2, step=1)
 
     st.text(" Hammerknuden kan tilbyde enten dobbeltseng eller enkeltsenge efter ønske")
     seng = st.selectbox("type af seng", options=["dobbeltseng", "enkeltsenge"])
@@ -114,15 +117,15 @@ st.markdown(f"**Foreløbig pris denne reservation med 5 % online rabat** {pris_t
 print(pris)
 
 print(days.days)
+to_addr = email_address, [admin_email]  #'finnjorg@gmail.com'   #[admin_email]  #email'finnjorg@mail.dk'
 
 
-to_addr = email #'finnjorg@gmail.com'   #[admin_email]  #email'finnjorg@mail.dk'
 confirmation_password = st.text_input("pc0012hk") #Pc2024Bonv
 booking_submitted = st.button("Send forespørgelse")
-if booking_submitted:
-    send_danish_confirmation_email(to_addr, confirmation_password, navn, antal, personer, checkin_date, checkout_date,
+if sprog == "danish" and booking_submitted:
+    send_danish_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer, checkin_date, checkout_date,
                                    text_bf, text_bed, text_free, pris_tot)
-    st.markdown('forespørgelse er afsendt dette windue kan lukkes')
+    st.markdown('forespørgelse er afsendt dette vindue kan lukkes')
 else:
     st.markdown('forespørgelsen ikke sendt, sendt mail direkte til mail@hammerknuden.dk')
 

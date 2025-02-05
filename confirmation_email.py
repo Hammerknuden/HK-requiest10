@@ -5,7 +5,6 @@ from email.utils import make_msgid
 from pathlib import Path
 from datetime import datetime
 
-
 port = 587 #587
 smtp_server = 'send.one.com'  #'asmtp.yousee.dk'
 Subject = "Hammerknuden Reservation"
@@ -23,8 +22,9 @@ def send_email(confirmation_password, email):
         server.send_message(email)
 
 
-def danish_email_html_template(logo_cid, to_addr, navn, antal, personer, checkin_date, checkout_date,
+def danish_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_date, checkout_date,
                                text_bf, text_bed, text_free, pris_tot):
+
     return f"""<html>        <html style="display: table; margin: auto;">
         <head>
             <meta charset="UTF-8" />
@@ -43,8 +43,8 @@ def danish_email_html_template(logo_cid, to_addr, navn, antal, personer, checkin
             <p>
             Der er idag foretaget følgende reservation forespørgelse for <b>{navn}</b> 
             </p>
-            <p>Der ønskes {antal} Dobbelt værelse med bad, kitchenette og terrasse til ialt 
-            {personer} personer. </p>
+            <p>Der ønskes {num_rooms} Dobbelt værelse med bad, kitchenette og terrasse til ialt 
+            {num_personer} personer. </p>
                   
             <hr>
             <p>Indcheck er den<span style="padding-left:3em"><b> {checkin_date}</b></span></p>
@@ -54,7 +54,7 @@ def danish_email_html_template(logo_cid, to_addr, navn, antal, personer, checkin
             <hr>
             <table>
                 <tr>
-                    <td>{text_bf}</td>
+                    <p>{text_bf}</p>
                     <p> {text_bed} </p>
                     <p>{text_free} </p<
                     <td><span style=float:right> -- </style></td>
@@ -69,30 +69,30 @@ def danish_email_html_template(logo_cid, to_addr, navn, antal, personer, checkin
             mail@hammerknuden.dk - +45 56481750  (call only)<br>
             Mobil pay - 133565 or Danske Bank reg 4720 kt 4720758679</align></p></p>
         </body>
-    </html>
+        </html>
     """
 
 
-def send_danish_confirmation_email(to_addr, confirmation_password, name, antal, personer,
+def send_danish_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer,
                                    checkin_date, checkout_date, text_bf, text_bed,
                                    text_free, pris_tot):
 
     logo_cid = make_msgid()
-    html_content = danish_email_html_template(logo_cid[1:-1], name, antal, personer, checkin_date,
+    html_content = danish_email_html_template(logo_cid[1:-1], navn, num_rooms, num_personer, checkin_date,
                                               checkout_date, text_bf, text_bed, text_free, pris_tot)
 
 
 # construct email
-    email = EmailMessage()
+email = EmailMessage()
 
-    email['Subject'] = Subject
-    email['From'] = sender_email
-    email['To'] = [to_addr]
-    email.set_content("Email client does not support html content")
-    email.add_alternative(html_content, subtype='html')
+email['Subject'] = Subject
+email['From'] = sender_email
+email['To'] = 'to_addr'
+email.set_content("Email client does not support html content")
+email.add_alternative(html_content, subtype='html')
 
 
 with open(logo_path, 'rb') as img:
     email.get_payload()[0].add_related(img.read(), 'image', 'jpeg', cid=logo_cid)
 
-    send_email(confirmation_password, email)
+send_email(confirmation_password, email)
