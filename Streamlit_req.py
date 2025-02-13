@@ -119,7 +119,6 @@ print(pris)
 print(days.days)
 to_addr = email_address, [admin_email]  #'finnjorg@gmail.com'   #[admin_email]  #email'finnjorg@mail.dk'
 
-
 confirmation_password = st.text_input("pc0012hk") #Pc2024Bonv
 booking_submitted = st.button("Send forespørgelse")
 if sprog == "danish" and booking_submitted:
