@@ -3,9 +3,8 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime, date
 from pathlib import Path
-
 import numpy as np
-from confirmation_email import (admin_email, send_danish_confirmation_email, send_german_confirmation_email)
+from confirmation_email import (admin_email, send_danish_confirmation_email) #, send_german_confirmation_email)
 from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
 import base64
@@ -15,7 +14,7 @@ st.title("**HAMMERKNUDEN SOMMERPENSION**")
 
 st.image("logo2.jpg")
 
-sprog = st.selectbox("Vælg sprog, Select language, Wählen Sie Sprache aus", options=["dansk"])
+sprog = st.selectbox("Vælg sprog, Select language, Wählen Sie Sprache aus", options=["dansk", "Deutsch"])
 
 if sprog == "dansk":
     st.text("Send en booking forespørgelse til Hammerknuden Sommerpension")
@@ -90,16 +89,16 @@ mixend = high_season_end - checkin_date
 mixend_b = checkout_date - high_season_end
 
 if high_booking:
-    pris = (high_season_price * int(days.days)) * int(antal)
+    pris = (high_season_price * int(days.days)) * int(num_rooms)
 if low_booking:
-    pris = (low_season_price * int(days.days)) * int(antal)
+    pris = (low_season_price * int(days.days)) * int(num_rooms)
 if mixbooking_early:
     pris = (((int(mixearly.days) * high_season_price) + (int(mixearly_b.days) * low_season_price)) * int(num_rooms))
 if mixbooking_end:
     pris = (high_season_price * (int(mixend.days)) + (int(mixend_b.days) * low_season_price)) * int(num_rooms)
 
 if mad:
-    bf_t = (days.days * int(bf_price) * int(personer))
+    bf_t = (days.days * int(bf_price) * int(num_personer))
 else:
     bf_t = 0
 print(bf_t)
@@ -117,14 +116,19 @@ st.markdown(f"**Foreløbig pris denne reservation med 5 % online rabat** {pris_t
 print(pris)
 
 print(days.days)
-to_addr = email_address, [admin_email]  #'finnjorg@gmail.com'   #[admin_email]  #email'finnjorg@mail.dk'
+to_addr = [email_address, admin_email]  #'finnjorg@gmail.com'   #[admin_email]  #email'finnjorg@mail.dk'
 
 confirmation_password = st.text_input("pc0012hk") #Pc2024Bonv
 booking_submitted = st.button("Send forespørgelse")
+
 if sprog == "danish" and booking_submitted:
     send_danish_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer, checkin_date, checkout_date,
                                    text_bf, text_bed, text_free, pris_tot)
     st.markdown('forespørgelse er afsendt dette vindue kan lukkes')
+if sprog == "Deutsch" and booking_submitted:
+    send_german_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer, checkin_date, checkout_date,
+                                   text_bf, text_bed, text_free, pris_tot)
+
 else:
     st.markdown('forespørgelsen ikke sendt, sendt mail direkte til mail@hammerknuden.dk')
 
