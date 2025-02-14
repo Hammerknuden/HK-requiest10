@@ -4,7 +4,7 @@ import pandas as pd
 from datetime import datetime, date
 from pathlib import Path
 import numpy as np
-from confirmation_email import (admin_email, send_danish_confirmation_email) #, send_german_confirmation_email)
+from confirmation_email import (admin_email, send_danish_confirmation_email, send_german_confirmation_email)
 from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
 import base64
