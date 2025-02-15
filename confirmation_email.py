@@ -84,7 +84,7 @@ def send_danish_confirmation_email(to_addr, confirmation_password, navn, num_roo
 
     email['Subject'] = Subject
     email['From'] = sender_email
-    email['To'] = 'to_addr'
+    email['To'] = to_addr
     email.set_content("Email client does not support html content")
     email.add_alternative(html_content, subtype='html')
 
