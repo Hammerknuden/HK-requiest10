@@ -53,44 +53,6 @@ if sprog == "dansk":
         text_free = st.text_input("Skriv ønsker eller yderligere information  ")
     else:
         text_free = st.text("-")
-
-    if sprog == "Deutsch":
-        st.text("Anfrage des reservation Hammerknuden Sommerpension")
-        st.text("En forespørgelse vil normalt bliver besvaret/bekræftet inden for 12 timer")
-
-        st.text("Kontaktoplysninger")
-
-        navn = st.text_input("nahme  ")
-        telefon = st.text_input("Telefonnummer  ")
-        email_address = st.text_input("Email adresse you@domain.dk  ")
-
-        st.subheader("Hvilke ønsker har du ??  ")
-        checkin_date = st.date_input("ønsket ankomst dato: ")
-        checkout_date = st.date_input("ønsket afrejse dato: ")
-
-        enkelt = st.checkbox("ønskes enkeltværelse ( 1 person )  ")
-        mad = st.checkbox("ønskes morgenmad under opholdet")
-        if mad:
-            text_bf = "Morgenmad er inkluderet"
-        else:
-            text_bf = "Morgenmad er ikke inkluderet"
-
-        st.text("Der kan bo 2 personer i hvert rum ")
-
-        num_rooms = st.number_input("antal væreser i alt:", value=1, step=1)
-        num_personer = st.number_input("Antal personer ialt:", value=2, step=1)
-
-        st.text(" Hammerknuden kan tilbyde enten dobbeltseng eller enkeltsenge efter ønske")
-        seng = st.selectbox("type af seng", options=["dobbeltseng", "enkeltsenge"])
-        if seng == "dobbeltseng":
-            text_bed = "Der er valgt dobbetseng "
-        else:
-            text_bed = "Der er valgt enkeltsenge  "
-        extext = st.checkbox("ekstra information eller forespørgelse")
-        if extext:
-            text_free = st.text_input("Skriv ønsker eller yderligere information  ")
-        else:
-            text_free = st.text("-")
 # calculations and data
     if enkelt:
         high_season_price = 950  # 2025 950
@@ -155,19 +117,18 @@ print(pris)
 
 print(days.days)
 to_addr = [email_address, admin_email]  #'finnjorg@gmail.com'   #[admin_email]  #email'finnjorg@mail.dk'
-print(to_addr)
-confirmation_password = 'pc0012hk'  #st.text_input("pc0012hk") #Pc2024Bonv
+
+confirmation_password = st.text_input("pc0012hk") #Pc2024Bonv
 booking_submitted = st.button("Send forespørgelse")
-print(sprog)
-if sprog == "dansk" and booking_submitted:
+
+if sprog == "danish" and booking_submitted:
     send_danish_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer, checkin_date, checkout_date,
                                    text_bf, text_bed, text_free, pris_tot)
-    print('mail sendt')
     st.markdown('forespørgelse er afsendt dette vindue kan lukkes')
-elif sprog == "Deutsch" and booking_submitted:
+if sprog == "Deutsch" and booking_submitted:
     send_german_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer, checkin_date, checkout_date,
                                    text_bf, text_bed, text_free, pris_tot)
-    st.markdown('Die Anfrage wurde gesendet. Dieses Fenster kann geschlossen werden')
+
 else:
     st.markdown('forespørgelsen ikke sendt, sendt mail direkte til mail@hammerknuden.dk')
 
