@@ -53,15 +53,53 @@ if sprog == "dansk":
         text_free = st.text_input("Skriv ønsker eller yderligere information  ")
     else:
         text_free = st.text("-")
-# calculations and data
-    if enkelt:
-        high_season_price = 950  # 2025 950
-        low_season_price = 830  # 2025 830
-        single_room = "Y"
+
+if sprog == "Deutsch":
+    st.text("Anfrage des reservation für Hammerknuden Sommerpension")
+    st.text("Eiene anfrage wurde won 12 stunde anworted werden")
+
+    st.text("Kontakt")
+
+    navn = st.text_input("nahme  ")
+    telefon = st.text_input("Telefonnummer  ")
+    email_address = st.text_input("Email adresse you@domain.dk  ")
+
+    st.subheader("Hvilke ønsker har du ??  ")
+    checkin_date = st.date_input("ankomst dato: ")
+    checkout_date = st.date_input("abrejse dato: ")
+
+    enkelt = st.checkbox("ønskes enkeltværelse ( 1 person )  ")
+    mad = st.checkbox("ønskes morgenmad under opholdet")
+    if mad:
+        text_bf = "Früstuck sind inkluderet"
     else:
-        high_season_price = 1050  # 2025 1050
-        low_season_price = 930  # 2025 930
-        single_room = "N"
+        text_bf = "Frûstuck sind nicht inkluderet"
+
+    st.text("Der kan bo 2 personer i hvert rum ")
+
+    num_rooms = st.number_input("antal væreser i alt:", value=1, step=1)
+    num_personer = st.number_input("Antal personer ialt:", value=2, step=1)
+
+    st.text(" Hammerknuden kan tilbyde enten dobbeltseng eller enkeltsenge efter ønske")
+    seng = st.selectbox("type af seng", options=["dobbeltseng", "enkeltsenge"])
+    if seng == "dobbeltseng":
+        text_bed = "Der er valgt dobbetseng "
+    else:
+        text_bed = "Der er valgt enkeltsenge  "
+    extext = st.checkbox("ekstra information eller forespørgelse")
+    if extext:
+        text_free = st.text_input("Skriv ønsker eller yderligere information  ")
+    else:
+        text_free = st.text("-")
+# calculations and data
+if enkelt:
+    high_season_price = 950  # 2025 950
+    low_season_price = 830  # 2025 830
+    single_room = "Y"
+else:
+    high_season_price = 1050  # 2025 1050
+    low_season_price = 930  # 2025 930
+    single_room = "N"
 print(high_season_price)
 print(low_season_price)
 #st.markdown(high_season_price)
@@ -118,7 +156,7 @@ print(pris)
 print(days.days)
 to_addr = [email_address, admin_email]  #'finnjorg@gmail.com'   #[admin_email]  #email'finnjorg@mail.dk'
 
-confirmation_password = st.text_input("pc0012hk") #Pc2024Bonv
+confirmation_password = "pc0012hk" #st.text_input("pc0012hk") #Pc2024Bonv
 booking_submitted = st.button("Send forespørgelse")
 
 if sprog == "danish" and booking_submitted:
