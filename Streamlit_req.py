@@ -14,7 +14,7 @@ st.title("**HAMMERKNUDEN SOMMERPENSION**")
 
 st.image("logo2.jpg")
 
-sprog = st.selectbox("Vælg sprog, Select language, Wählen Sie Sprache aus", options=["dansk", "Deutsch"])
+sprog = st.selectbox("Vælg sprog, Select language, Wählen Sie Sprache aus", options=["dansk", "english", "Deutsch"])
 
 if sprog == "dansk":
     st.text("Send en booking forespørgelse til Hammerknuden Sommerpension")
@@ -51,6 +51,43 @@ if sprog == "dansk":
     extext = st.checkbox("ekstra information eller forespørgelse")
     if extext:
         text_free = st.text_input("Skriv ønsker eller yderligere information  ")
+    else:
+        text_free = st.text("-")
+if sprog == "english":
+    st.text("Send a booking booking requiest to Hammerknuden Sommerpension")
+    st.text("Your inquiry will normaly be answered within 12 hours")
+
+    st.text("Kontaktoplysninger")
+
+    navn = st.text_input("name  ")
+    telefon = st.text_input("Telefonnummer with prefix (+45...  ")
+    email_address = st.text_input("Your mail adresse you@domain.dk  ")
+
+    st.subheader("What do you need ??  ")
+    checkin_date = st.date_input("Arrival date: ")
+    checkout_date = st.date_input("Departure date: ")
+
+    enkelt = st.checkbox("Do you require a single room ( for one person )  ")
+    mad = st.checkbox("breakfirst during you stay ")
+    if mad:
+        text_bf = "Brakefirst is uncluded "
+    else:
+        text_bf = "Brakefirst is not included "
+
+    st.text("There are room for two persons in each room  ")
+
+    num_rooms = st.number_input("Number of rooms in total: ", value=1, step=1)
+    num_personer = st.number_input("Number of persons in total: ", value=2, step=1)
+
+    st.text(" Hammerknuden offers dobbeltbed og singles on demand: ")
+    seng = st.selectbox("type af seng", options=["dobbeltbed", "singlebeds"])
+    if seng == "dobbeltbed":
+        text_bed = "Your choise is dobbetbed "
+    else:
+        text_bed = "Your choise is singlebeds  "
+    extext = st.checkbox("Any extra information or wishes")
+    if extext:
+        text_free = st.text_input("just start writing  ")
     else:
         text_free = st.text("-")
 
@@ -163,7 +200,13 @@ if sprog == "dansk" and booking_submitted:
     send_danish_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer, checkin_date, checkout_date,
                                    text_bf, text_bed, text_free, pris_tot)
     st.markdown('forespørgelse er afsendt dette vindue kan lukkes')
-if sprog == "Deutsch" and booking_submitted:
+
+elif sprog == "english" and booking_submitted:
+    send_danish_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer, checkin_date, checkout_date,
+                                   text_bf, text_bed, text_free, pris_tot)
+    st.markdown('Your request has been send, this window can be closed')
+
+elif sprog == "Deutsch" and booking_submitted:
     send_german_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer, checkin_date, checkout_date,
                                    text_bf, text_bed, text_free, pris_tot)
 
