@@ -73,9 +73,13 @@ if sprog == "english":
     checkout_date = st.date_input("Departure date: ")
 
     enkelt = st.checkbox("Do you require a single room ( for one person )  ")
+    if enkelt:
+        text_sing("The room is used as a singleroom ")
+    else
+        text_sing("")
     mad = st.checkbox("breakfirst during you stay ")
     if mad:
-        text_bf = "Breakefirst is uncluded "
+        text_bf = "Breakefirst is included "
     else:
         text_bf = "Breakefirst is not included "
 

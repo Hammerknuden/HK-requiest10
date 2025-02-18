@@ -22,7 +22,7 @@ def send_email(confirmation_password, email):
         server.send_message(email)
 
 
-def danish_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_date, checkout_date,
+def danish_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_date, checkout_date, text_sing,
                                text_bf, text_bed, text_free, pris_tot):
 
     return f"""<html>        <html style="display: table; margin: auto;">
@@ -54,6 +54,7 @@ def danish_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_
             <hr>
             <table>
                 <tr>
+                    <p>{text_sing}</p>
                     <p>{text_bf}</p>
                     <p> {text_bed} </p>
                     <p>{text_free} </p>
@@ -74,11 +75,11 @@ def danish_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_
 
 
 def send_danish_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer,
-                                   checkin_date, checkout_date, text_bf, text_bed,
+                                   checkin_date, checkout_date, text_sing, text_bf, text_bed,
                                    text_free, pris_tot):
     logo_cid = make_msgid()
     html_content = danish_email_html_template(logo_cid[1:-1], navn, num_rooms, num_personer, checkin_date,
-                                              checkout_date, text_bf, text_bed, text_free, pris_tot)
+                                              checkout_date, text_sing, text_bf, text_bed, text_free, pris_tot)
 # construct email
     email = EmailMessage()
 
