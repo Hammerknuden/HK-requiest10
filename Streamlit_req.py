@@ -75,7 +75,7 @@ if sprog == "english":
     enkelt = st.checkbox("Do you require a single room ( for one person )  ")
     if enkelt:
         text_sing("The room is used as a singleroom ")
-    else
+    else:
         text_sing("")
     mad = st.checkbox("breakfirst during you stay ")
     if mad:
