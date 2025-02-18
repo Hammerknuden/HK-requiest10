@@ -41,7 +41,7 @@ def danish_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_
             <img src ="cid:{logo_cid}" alt=logo width="300"/>
             </p>
             <p>
-            Der er idag foretaget følgende reservation forespørgelse for <b>{navn}</b> 
+            Tak for din interesse i at bo hos os på Hammerknuden, vi har noteret dine ønsker for <b>{navn}</b> 
             </p>
             <p>Der ønskes {num_rooms} Dobbelt værelse med bad, kitchenette og terrasse til ialt 
             {num_personer} personer. </p>
@@ -56,7 +56,7 @@ def danish_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_
                 <tr>
                     <p>{text_bf}</p>
                     <p> {text_bed} </p>
-                    <p>{text_free} </p<
+                    <p>{text_free} </p>
                     <td><span style=float:right> -- </style></td>
                 </tr>
             <hr>          

@@ -31,6 +31,10 @@ if sprog == "dansk":
     checkout_date = st.date_input("ønsket afrejse dato: ")
 
     enkelt = st.checkbox("ønskes enkeltværelse ( 1 person )  ")
+    if enkelt:
+        text_sing = "dobbeltværelse ønskes anvendt som enkeltvørelse"
+    else:
+        text_sing = ""
     mad = st.checkbox("ønskes morgenmad under opholdet")
     if mad:
         text_bf = "Morgenmad er inkluderet"
@@ -53,6 +57,7 @@ if sprog == "dansk":
         text_free = st.text_input("Skriv ønsker eller yderligere information  ")
     else:
         text_free = st.text("-")
+
 if sprog == "english":
     st.text("Send a booking booking requiest to Hammerknuden Sommerpension")
     st.text("Your inquiry will normaly be answered within 12 hours")
@@ -70,9 +75,9 @@ if sprog == "english":
     enkelt = st.checkbox("Do you require a single room ( for one person )  ")
     mad = st.checkbox("breakfirst during you stay ")
     if mad:
-        text_bf = "Brakefirst is uncluded "
+        text_bf = "Breakefirst is uncluded "
     else:
-        text_bf = "Brakefirst is not included "
+        text_bf = "Breakefirst is not included "
 
     st.text("There are room for two persons in each room  ")
 
@@ -89,7 +94,7 @@ if sprog == "english":
     if extext:
         text_free = st.text_input("just start writing  ")
     else:
-        text_free = st.text("-")
+        text_free = st.text("")
 
 if sprog == "Deutsch":
     st.text("Anfrage des reservation für Hammerknuden Sommerpension")
