@@ -22,8 +22,8 @@ def send_email(confirmation_password, email):
         server.send_message(email)
 
 
-def danish_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_date, checkout_date, text_sing,
-                               text_bf, text_bed, text_free, pris_tot):
+def danish_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_date, checkout_date,
+                               text_bf, text_bed, text_free, pris_tot, text_sing):
 
     return f"""<html>        <html style="display: table; margin: auto;">
         <head>
@@ -75,11 +75,11 @@ def danish_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_
 
 
 def send_danish_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer,
-                                   checkin_date, checkout_date, text_sing, text_bf, text_bed,
-                                   text_free, pris_tot):
+                                   checkin_date, checkout_date, text_bf, text_bed,
+                                   text_free, pris_tot, text_sing):
     logo_cid = make_msgid()
     html_content = danish_email_html_template(logo_cid[1:-1], navn, num_rooms, num_personer, checkin_date,
-                                              checkout_date, text_sing, text_bf, text_bed, text_free, pris_tot)
+                                              checkout_date, text_bf, text_bed, text_free, pris_tot, text_sing)
 # construct email
     email = EmailMessage()
 
@@ -96,7 +96,7 @@ def send_danish_confirmation_email(to_addr, confirmation_password, navn, num_roo
 
 
 def english_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_date, checkout_date,
-                               text_bf, text_bed, text_free, pris_tot):
+                                text_sing, text_bf, text_bed, text_free, pris_tot):
     return f"""<html>        <html style="display: table; margin: auto;">
         <head>
             <meta charset="UTF-8" />
@@ -107,7 +107,7 @@ def english_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin
         <body style="display: table-cell; vertical-align: left;">
             <hr>
             <h1> **************************** </h1> 
-            <h1>   Reservations forespørgelse</h1> 
+            <h1>   Reservation request</h1> 
             <h1> **************************** </h1>
 
             <img src ="cid:{logo_cid}" alt=logo width="300"/>
@@ -119,13 +119,14 @@ def english_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin
             {num_personer} personer. </p>
 
             <hr>
-            <p>Indcheck er den<span style="padding-left:3em"><b> {checkin_date}</b></span></p>
-            <p>Udcheck den<span style="padding-left:4em"><b> {checkout_date}</b></span></p>
+            <p>Inncheck on the<span style="padding-left:3em"><b> {checkin_date}</b></span></p>
+            <p>Checkout on the<span style="padding-left:4em"><b> {checkout_date}</b></span></p>
             <hr>
-            <p>Indcheck er efter kl. 14:30 på indcheckningsdagen og udcheck før kl. 10:00, ellers efter aftale</p>
+            <p>Indcheck is from kl. 14:30 on date of arrivel og Checkout before kl. 10:00, other after agreement</p>
             <hr>
             <table>
                 <tr>
+                    <p>{text_sing}</p>
                     <p>{text_bf}</p>
                     <p> {text_bed} </p>
                     <p>{text_free} </p<
@@ -133,7 +134,7 @@ def english_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin
                 </tr>
             <hr>          
 
-                <p> Opholdet er foreløbigt beregnet til {pris_tot:.2}kr inklusiv 5% onlinerabat.
+                <p> Estimated price is calculated to {pris_tot:.2}kr inclusiv 5% online-discount.
             <hr>
             </p>
             <p align="center"><strong>HAMMERKNUDEN SOMMERPENSION</strong><br>
@@ -146,11 +147,10 @@ def english_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin
 
 
 def send_english_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer,
-                                   checkin_date, checkout_date, text_bf, text_bed,
-                                   text_free, pris_tot):
+                                    checkin_date, checkout_date, text_sing, text_bf, text_bed, text_free, pris_tot):
     logo_cid = make_msgid()
     html_content = danish_email_html_template(logo_cid[1:-1], navn, num_rooms, num_personer, checkin_date,
-                                              checkout_date, text_bf, text_bed, text_free, pris_tot)
+                                              checkout_date, text_sing, text_bf, text_bed, text_free, pris_tot)
     # construct email
     email = EmailMessage()
 
@@ -167,7 +167,7 @@ def send_english_confirmation_email(to_addr, confirmation_password, navn, num_ro
 
 
 def german_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_date, checkout_date,
-                               text_bf, text_bed, text_free, pris_tot):
+                               text_bf, text_sing, text_bed, text_free, pris_tot):
     return f"""<html>        <html style="display: table; margin: auto;">
         <head>
             <meta charset="UTF-8" />
@@ -178,22 +178,23 @@ def german_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_
         <body style="display: table-cell; vertical-align: left;">
             <hr>
             <h1> **************************** </h1> 
-            <h1>   Reservations forespørgelse</h1> 
+            <h1>   Reservierungsanfrage</h1> 
             <h1> **************************** </h1>
 
             <img src ="cid:{logo_cid}" alt=logo width="300"/>
             </p>
             <p>
-            Der er idag foretaget følgende reservation forespørgelse for <b>{navn}</b> 
+            Vielen Dank für Ihr Interesse an einem Urlaub in Hammerknuden, Folgende Wünsche haben wir notiert <b>{navn}</b> 
             </p>
-            <p>Der ønskes {num_rooms} Dobbelt værelse med bad, kitchenette og terrasse til ialt 
-            {num_personer} personer. </p>
+            <p>Der ønskes {num_rooms} Doppelzimmer, Ed bad, kochnische und Terrasse für  
+            {num_personer} Gäste. </p>
 
             <hr>
-            <p>Indcheck er den<span style="padding-left:3em"><b> {checkin_date}</b></span></p>
-            <p>Udcheck den<span style="padding-left:4em"><b> {checkout_date}</b></span></p>
+            <p>Reservierung ist von<span style="padding-left:3em"><b> {checkin_date}</b></span></p>
+            <p>Bis <span style="padding-left:4em"><b> {checkout_date}</b></span></p>
             <hr>
-            <p>Indcheck er efter kl. 14:30 på indcheckningsdagen og udcheck før kl. 10:00, ellers efter aftale</p>
+            <p>Der Check-in erfolgt später kl. 14:30 Uhr am des tag des check-in und check-out vorher kl. 10:00 Uhr 
+            ansonsten Vereinbarung</p>
             <hr>
             <table>
                 <tr>
@@ -204,7 +205,7 @@ def german_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_
                 </tr>
             <hr>          
 
-                <p> Opholdet er foreløbigt beregnet til {pris_tot:.2}kr inklusiv 5% onlinerabat.
+                <p> Vorläufig berechneter Preis für den Aufenthalt inklusive 5 % Online-Rabatt {pris_tot:.2}kr.
             <hr>
             </p>
             <p align="center"><strong>HAMMERKNUDEN SOMMERPENSION</strong><br>
@@ -220,7 +221,7 @@ def send_german_confirmation_email(to_addr, confirmation_password, navn, num_roo
                                    checkin_date, checkout_date, text_bf, text_bed,
                                    text_free, pris_tot):
     logo_cid = make_msgid()
-    html_content = danish_email_html_template(logo_cid[1:-1], navn, num_rooms, num_personer, checkin_date,
+    html_content = german_email_html_template(logo_cid[1:-1], navn, num_rooms, num_personer, checkin_date,
                                               checkout_date, text_bf, text_bed, text_free, pris_tot)
     # construct email
     email = EmailMessage()
