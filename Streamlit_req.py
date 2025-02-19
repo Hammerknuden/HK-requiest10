@@ -213,8 +213,8 @@ confirmation_password = "pc0012hk"  #st.text_input("pc0012hk") #Pc2024Bonv
 booking_submitted = st.button("Send forespørgelse")
 
 if sprog == "dansk" and booking_submitted:
-    send_danish_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer, checkin_date, checkout_date,
-                                   text_bf, text_bed, text_free, pris_tot)
+    send_danish_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer, checkin_date,
+                                   checkout_date, text_sing, text_bf, text_bed, text_free, pris_tot)
     st.markdown('forespørgelse er afsendt dette vindue kan lukkes')
 
 elif sprog == "english" and booking_submitted:
