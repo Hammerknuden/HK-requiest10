@@ -23,7 +23,7 @@ def send_email(confirmation_password, email):
 
 
 def danish_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_date, checkout_date,
-                               text_bf, text_bed, text_free, pris_tot, text_sing):
+                               text_sing, text_bf, text_bed, text_free, pris_tot):
 
     return f"""<html>        <html style="display: table; margin: auto;">
         <head>
