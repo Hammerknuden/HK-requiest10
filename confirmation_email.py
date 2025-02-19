@@ -75,11 +75,11 @@ def danish_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_
 
 
 def send_danish_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer,
-                                   checkin_date, checkout_date, text_bf, text_bed,
-                                   text_free, pris_tot, text_sing):
+                                   checkin_date, checkout_date, text_sing, text_bf, text_bed,
+                                   text_free, pris_tot):
     logo_cid = make_msgid()
     html_content = danish_email_html_template(logo_cid[1:-1], navn, num_rooms, num_personer, checkin_date,
-                                              checkout_date, text_bf, text_bed, text_free, pris_tot, text_sing)
+                                              checkout_date, text_sing, text_bf, text_bed, text_free, pris_tot)
 # construct email
     email = EmailMessage()
 
@@ -167,7 +167,7 @@ def send_english_confirmation_email(to_addr, confirmation_password, navn, num_ro
 
 
 def german_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_date, checkout_date,
-                               text_bf, text_sing, text_bed, text_free, pris_tot):
+                               text_sing, text_bf, text_bed, text_free, pris_tot):
     return f"""<html>        <html style="display: table; margin: auto;">
         <head>
             <meta charset="UTF-8" />
@@ -218,11 +218,11 @@ def german_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_
 
 
 def send_german_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer,
-                                   checkin_date, checkout_date, text_bf, text_bed,
+                                   checkin_date, checkout_date, text_sing, text_bf, text_bed,
                                    text_free, pris_tot):
     logo_cid = make_msgid()
     html_content = german_email_html_template(logo_cid[1:-1], navn, num_rooms, num_personer, checkin_date,
-                                              checkout_date, text_bf, text_bed, text_free, pris_tot)
+                                              checkout_date, text_sing, text_bf, text_bed, text_free, pris_tot)
     # construct email
     email = EmailMessage()
 

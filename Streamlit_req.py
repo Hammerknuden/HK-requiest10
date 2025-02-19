@@ -32,7 +32,7 @@ if sprog == "dansk":
 
     enkelt = st.checkbox("ønskes enkeltværelse ( 1 person )  ")
     if enkelt:
-        text_sing = "dobbeltværelse ønskes anvendt som enkeltvørelse"
+        text_sing = "dobbeltværelse ønskes anvendt som enkeltværelse"
     else:
         text_sing = ""
     mad = st.checkbox("ønskes morgenmad under opholdet")
@@ -74,9 +74,9 @@ if sprog == "english":
 
     enkelt = st.checkbox("Do you require a single room ( for one person )  ")
     if enkelt:
-        text_sing("The room is used as a singleroom ")
+        text_sing = ("The room is used as a singleroom ")
     else:
-        text_sing("")
+        text_sing = ""
     mad = st.checkbox("breakfirst during you stay ")
     if mad:
         text_bf = "Breakefirst is included "
@@ -115,6 +115,11 @@ if sprog == "Deutsch":
     checkout_date = st.date_input("abrejse dato: ")
 
     enkelt = st.checkbox("ønskes enkeltværelse ( 1 person )  ")
+    if enkelt:
+        text_sing = "Das Doppelzimmer wird als Einzelzimmer genutzt "
+    else:
+        text_sing = ""
+
     mad = st.checkbox("ønskes morgenmad under opholdet")
     if mad:
         text_bf = "Früstuck sind inkluderet"
@@ -186,20 +191,22 @@ if mad:
 else:
     bf_t = 0
 print(bf_t)
-#st.markdown(bf_t)
+st.markdown(bf_t)
 rabat_a = int(rabat) / 100
 rabat_b = bf_t * rabat_a
 rabat_r = pris * rabat_a
 rabat_t = rabat_b + rabat_r
 print(rabat_t)
-#st.markdown(rabat_t)
+st.markdown(pris)
+st.markdown(rabat_t)
 
-pris_tot = pris - rabat_t
+pris_tot = pris + bf_t - rabat_t
 st.markdown(f"**Antal Dage i denne booking**, {days.days}")
 st.markdown(f"**Foreløbig pris denne reservation med 5 % online rabat** {pris_tot:.2f}kr")
-print(pris)
-
 print(days.days)
+print(pris_tot)
+
+
 to_addr = [email_address, admin_email]  #'finnjorg@gmail.com'   #[admin_email]  #email'finnjorg@mail.dk'
 
 confirmation_password = "pc0012hk"  #st.text_input("pc0012hk") #Pc2024Bonv
