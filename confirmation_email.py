@@ -41,7 +41,8 @@ def danish_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_
             <img src ="cid:{logo_cid}" alt=logo width="300"/>
             </p>
             <p>
-            Tak for din interesse i at bo hos os på Hammerknuden, vi har noteret dine ønsker for <b>{navn}</b> 
+            Tak for din interesse i at bo hos os på Hammerknuden, vi har noteret dine ønsker for 
+            <b>{navn}</b> 
             </p>
             <p>Der ønskes {num_rooms} Dobbelt værelse med bad, kitchenette og terrasse til ialt 
             {num_personer} personer. </p>
@@ -113,7 +114,8 @@ def english_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin
             <img src ="cid:{logo_cid}" alt=logo width="300"/>
             </p>
             <p>
-            Thank you for you interest in staying af Hammerknuden, we have recieved the following request for <b>{navn}</b> 
+            Thank you for you interest in staying af Hammerknuden, we have recieved the following request for 
+            <b>{navn}</b> 
             </p>
             <p>The total nummer of rooms {num_rooms} Dobbelt værelse med bath, kitchenette and terrasse for  
             {num_personer} personer. </p>
@@ -184,7 +186,8 @@ def german_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_
             <img src ="cid:{logo_cid}" alt=logo width="300"/>
             </p>
             <p>
-            Vielen Dank für Ihr Interesse an einem Urlaub in Hammerknuden, Folgende Wünsche haben wir notiert <b>{navn}</b> 
+            Vielen Dank für Ihr Interesse an einem Urlaub in Hammerknuden, Folgende Wünsche haben wir notiert 
+            <b>{navn}</b> 
             </p>
             <p>Der ønskes {num_rooms} Doppelzimmer, Ed bad, kochnische und Terrasse für  
             {num_personer} Gäste. </p>

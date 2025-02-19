@@ -35,6 +35,7 @@ if sprog == "dansk":
         text_sing = "dobbeltværelse ønskes anvendt som enkeltværelse"
     else:
         text_sing = ""
+
     mad = st.checkbox("ønskes morgenmad under opholdet")
     if mad:
         text_bf = "Morgenmad er inkluderet"
@@ -56,7 +57,7 @@ if sprog == "dansk":
     if extext:
         text_free = st.text_input("Skriv ønsker eller yderligere information  ")
     else:
-        text_free = st.text("-")
+        text_free = st.text("")
 
 if sprog == "english":
     st.text("Send a booking booking requiest to Hammerknuden Sommerpension")
@@ -74,14 +75,14 @@ if sprog == "english":
 
     enkelt = st.checkbox("Do you require a single room ( for one person )  ")
     if enkelt:
-        text_sing = ("The room is used as a singleroom ")
+        text_sing = "The room is used as a singleroom "
     else:
         text_sing = ""
     mad = st.checkbox("breakfirst during you stay ")
     if mad:
-        text_bf = "Breakefirst is included "
+        text_bf = "Breakfirst is included "
     else:
-        text_bf = "Breakefirst is not included "
+        text_bf = "Breakfirst is not included "
 
     st.text("There are room for two persons in each room  ")
 
@@ -106,9 +107,9 @@ if sprog == "Deutsch":
 
     st.text("Kontakt")
 
-    navn = st.text_input("nahme  ")
+    navn = st.text_input("name  ")
     telefon = st.text_input("Telefonnummer  ")
-    email_address = st.text_input("Email adresse you@domain.dk  ")
+    email_address = st.text_input("Email adresse you@domain.de  ")
 
     st.subheader("Hvilke ønsker har du ??  ")
     checkin_date = st.date_input("ankomst dato: ")
@@ -141,7 +142,7 @@ if sprog == "Deutsch":
     if extext:
         text_free = st.text_input("Skriv ønsker eller yderligere information  ")
     else:
-        text_free = st.text("-")
+        text_free = st.text_input("-")
 # calculations and data
 if enkelt:
     high_season_price = 950  # 2025 950
