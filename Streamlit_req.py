@@ -218,13 +218,13 @@ if sprog == "dansk" and booking_submitted:
     st.markdown('forespørgelse er afsendt dette vindue kan lukkes')
 
 elif sprog == "english" and booking_submitted:
-    send_danish_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer, checkin_date, checkout_date,
-                                   text_bf, text_bed, text_free, pris_tot)
+    send_danish_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer, checkin_date,
+                                   checkout_date, text_sing, text_bf, text_bed, text_free, pris_tot)
     st.markdown('Your request has been send, this window can be closed')
 
 elif sprog == "Deutsch" and booking_submitted:
-    send_german_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer, checkin_date, checkout_date,
-                                   text_bf, text_bed, text_free, pris_tot)
+    send_german_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer, checkin_date,
+                                   checkout_date, text_sing, text_bf, text_bed, text_free, pris_tot)
 
 else:
     st.markdown('forespørgelsen ikke sendt, sendt mail direkte til mail@hammerknuden.dk')
