@@ -191,14 +191,14 @@ if mad:
 else:
     bf_t = 0
 print(bf_t)
-st.markdown(bf_t)
+#st.markdown(bf_t)
 rabat_a = int(rabat) / 100
 rabat_b = bf_t * rabat_a
 rabat_r = pris * rabat_a
 rabat_t = rabat_b + rabat_r
 print(rabat_t)
-st.markdown(pris)
-st.markdown(rabat_t)
+#st.markdown(pris)
+#st.markdown(rabat_t)
 
 pris_tot = pris + bf_t - rabat_t
 st.markdown(f"**Antal Dage i denne booking**, {days.days}")
