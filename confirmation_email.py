@@ -63,7 +63,7 @@ def danish_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_
                 </tr>
             <hr>          
                 
-                <p> Opholdet er foreløbigt beregnet til {pris_tot}kr inklusiv 5% onlinerabat.
+                <p> Opholdet er foreløbigt beregnet til {pris_tot:.2}kr inklusiv 5% onlinerabat.
             <hr>
             </p>
             <p align="center"><strong>HAMMERKNUDEN SOMMERPENSION</strong><br>

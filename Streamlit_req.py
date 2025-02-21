@@ -208,7 +208,6 @@ print(days.days)
 print(pris_tot)
 
 
-
 to_addr = [email_address, admin_email]  #'finnjorg@gmail.com'   #[admin_email]  #email'finnjorg@mail.dk'
 
 confirmation_password = "pc0012hk"  #st.text_input("pc0012hk") #Pc2024Bonv
