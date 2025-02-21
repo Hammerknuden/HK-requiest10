@@ -142,7 +142,7 @@ if sprog == "Deutsch":
     if extext:
         text_free = st.text_input("Skriv ønsker eller yderligere information  ")
     else:
-        text_free = st.text_input("-")
+        text_free = st.text("")
 # calculations and data
 if enkelt:
     high_season_price = 950  # 2025 950
