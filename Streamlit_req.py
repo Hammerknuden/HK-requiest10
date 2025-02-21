@@ -111,17 +111,17 @@ if sprog == "Deutsch":
     telefon = st.text_input("Telefonnummer  ")
     email_address = st.text_input("Email adresse you@domain.de  ")
 
-    st.subheader("Hvilke ønsker har du ??  ")
+    st.subheader("Welche Termine wünschen Sie? ??  ")
     checkin_date = st.date_input("ankomst dato: ")
     checkout_date = st.date_input("abrejse dato: ")
 
-    enkelt = st.checkbox("ønskes enkeltværelse ( 1 person )  ")
+    enkelt = st.checkbox("Einzelzimmer erwünscht ( 1 person )  ")
     if enkelt:
         text_sing = "Das Doppelzimmer wird als Einzelzimmer genutzt "
     else:
         text_sing = ""
 
-    mad = st.checkbox("ønskes morgenmad under opholdet")
+    mad = st.checkbox("Während des Aufenthalts wird Frühstück verlangt")
     if mad:
         text_bf = "Früstuck sind inkluderet"
     else:
@@ -129,18 +129,18 @@ if sprog == "Deutsch":
 
     st.text("Der kan bo 2 personer i hvert rum ")
 
-    num_rooms = st.number_input("antal væreser i alt:", value=1, step=1)
-    num_personer = st.number_input("Antal personer ialt:", value=2, step=1)
+    num_rooms = st.number_input("Gesamtzahl der Zimmer:", value=1, step=1)
+    num_personer = st.number_input("Gesamtzahl der Gäste:", value=2, step=1)
 
-    st.text(" Hammerknuden kan tilbyde enten dobbeltseng eller enkeltsenge efter ønske")
-    seng = st.selectbox("type af seng", options=["dobbeltseng", "enkeltsenge"])
+    st.text(" Hammerknuden kann je nach Wunsch entweder ein Doppelbett oder Einzelbetten anbieten")
+    seng = st.selectbox("type af seng", options=["doppelbett", "Einzelbettene"])
     if seng == "dobbeltseng":
-        text_bed = "Der er valgt dobbetseng "
+        text_bed = "Sie haben sich für ein Doppelbett Entschieden "
     else:
-        text_bed = "Der er valgt enkeltsenge  "
-    extext = st.checkbox("ekstra information eller forespørgelse")
+        text_bed = "Sie haben sich für Einzelbette Entschieden "
+    extext = st.checkbox("Gibt es anderen information oder anfrage")
     if extext:
-        text_free = st.text_input("Skriv ønsker eller yderligere information  ")
+        text_free = st.text_input("Schriben sie bitte  ")
     else:
         text_free = st.text()
 # calculations and data
