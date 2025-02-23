@@ -63,7 +63,7 @@ def danish_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_
                 </tr>
             <hr>          
                 
-                <p> Opholdet er foreløbigt beregnet til {pris_tot:.2}kr inklusiv 5% onlinerabat.
+                <p> Opholdet er foreløbigt beregnet til {pris_tot:.2f}kr inklusiv 5% onlinerabat.
             <hr>
                 <p> kontaktoplysninger: <BR>
                 Mail {email_address} <BR>
@@ -140,7 +140,7 @@ def english_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin
                 </tr>
             <hr>          
 
-                <p> Estimated price is calculated to {pris_tot:.2}kr inclusiv 5% online-discount.
+                <p> Estimated price is calculated to {pris_tot:.2f}kr inclusiv 5% online-discount.
             <hr>
                 <p> Your Contact information:<BR>
                 Email : {email_address} <BR>
@@ -217,7 +217,7 @@ def german_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_
                 </tr>
             <hr>          
 
-                <p> Vorläufig berechneter Preis für den Aufenthalt inklusive 5 % Online-Rabatt {pris_tot:.2}kr.
+                <p> Vorläufig berechneter Preis für den Aufenthalt inklusive 5 % Online-Rabatt {pris_tot:.2f}kr.
             <hr>
                 <p> Ihren kontakt information: <BR>
                 Email : {email_address} <BR>
