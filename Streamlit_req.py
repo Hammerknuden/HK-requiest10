@@ -57,7 +57,7 @@ if sprog == "dansk":
     if extext:
         text_free = st.text_input("Skriv ønsker eller yderligere information  ")
     else:
-        text_free = st.text("")
+        text_free = st.text(" ")
 
 if sprog == "english":
     st.text("Send a booking booking requiest to Hammerknuden Sommerpension")
@@ -99,7 +99,7 @@ if sprog == "english":
     if extext:
         text_free = st.text_input("just start writing  ")
     else:
-        text_free = st.text("")
+        text_free = st.text(" ")
 
 if sprog == "Deutsch":
     st.text("Anfrage des reservation für Hammerknuden Sommerpension")
@@ -119,7 +119,7 @@ if sprog == "Deutsch":
     if enkelt:
         text_sing = "Das Doppelzimmer wird als Einzelzimmer genutzt "
     else:
-        text_sing = ""
+        text_sing = " "
 
     mad = st.checkbox("Während des Aufenthalts wird Frühstück verlangt")
     if mad:
@@ -142,7 +142,7 @@ if sprog == "Deutsch":
     if extext:
         text_free = st.text_input("Schriben sie bitte  ")
     else:
-        text_free = st.text()
+        text_free = st.text(" ")
 # calculations and data
 if enkelt:
     high_season_price = 950  # 2025 950
