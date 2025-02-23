@@ -26,7 +26,7 @@ if sprog == "dansk":
     telefon = st.text_input("Telefonnummer  ")
     email_address = st.text_input("Email adresse you@domain.dk  ")
 
-    st.subheader("Hvilke ønsker har du ??  ")
+    st.subheader("Hvilke ønsker har du/I ??  ")
     checkin_date = st.date_input("ønsket ankomst dato: ")
     checkout_date = st.date_input("ønsket afrejse dato: ")
 
@@ -57,7 +57,7 @@ if sprog == "dansk":
     if extext:
         text_free = st.text_input("Skriv ønsker eller yderligere information  ")
     else:
-        text_free = st.text(" ")
+        text_free = st.text_input(" ")
 
 if sprog == "english":
     st.text("Send a booking booking requiest to Hammerknuden Sommerpension")
@@ -99,7 +99,7 @@ if sprog == "english":
     if extext:
         text_free = st.text_input("just start writing  ")
     else:
-        text_free = st.text(" ")
+        text_free = st.text_input(" ")
 
 if sprog == "Deutsch":
     st.text("Anfrage des reservation für Hammerknuden Sommerpension")
@@ -142,7 +142,7 @@ if sprog == "Deutsch":
     if extext:
         text_free = st.text_input("Schriben sie bitte  ")
     else:
-        text_free = st.text(" ")
+        text_free = st.text_input(" ")
 # calculations and data
 if enkelt:
     high_season_price = 950  # 2025 950
