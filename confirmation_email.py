@@ -101,7 +101,7 @@ def send_danish_confirmation_email(to_addr, confirmation_password, navn, num_roo
 
 
 def english_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_date, checkout_date,
-                                text_sing, text_bf, text_bed, text_free, pris_tot, email_address, telefon):
+                                text_sing, text_bf, text_bed, text_free, pris_tot, text_price, email_address, telefon):
     return f"""<html>        <html style="display: table; margin: auto;">
         <head>
             <meta charset="UTF-8" />
@@ -148,7 +148,7 @@ def english_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin
             </p>
             <p align="center"><strong>HAMMERKNUDEN SOMMERPENSION</strong><br>
             Hammershusvej 74 - 3770 Allinge<br>
-            mail@hammerknuden.dk - +45 56481750  (call only)<br>
+            mail@hammerknuden.dk - +45 56481750  (call & SMS)<br>
             Mobil pay - 133565 or Danske Bank reg 4720 kt 4720758679</align></p></p>
         </body>
         </html>
@@ -157,11 +157,11 @@ def english_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin
 
 def send_english_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer,
                                     checkin_date, checkout_date, text_sing, text_bf, text_bed, text_free, pris_tot,
-                                    email_address, telefon):
+                                    text_price, email_address, telefon):
     logo_cid = make_msgid()
     html_content = danish_email_html_template(logo_cid[1:-1], navn, num_rooms, num_personer, checkin_date,
                                               checkout_date, text_sing, text_bf, text_bed, text_free, pris_tot,
-                                              email_address, telefon)
+                                              text_price, email_address, telefon)
     # construct email
     email = EmailMessage()
 
@@ -178,7 +178,7 @@ def send_english_confirmation_email(to_addr, confirmation_password, navn, num_ro
 
 
 def german_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_date, checkout_date,
-                               text_sing, text_bf, text_bed, text_free, pris_tot, email_address, telefon):
+                               text_sing, text_bf, text_bed, text_free, pris_tot, text_price, email_address, telefon):
     return f"""<html>        <html style="display: table; margin: auto;">
         <head>
             <meta charset="UTF-8" />
@@ -225,7 +225,7 @@ def german_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_
             </p>
             <p align="center"><strong>HAMMERKNUDEN SOMMERPENSION</strong><br>
             Hammershusvej 74 - 3770 Allinge<br>
-            mail@hammerknuden.dk - +45 56481750  (call only)<br>
+            mail@hammerknuden.dk - +45 56481750  (call & SMS)<br>
             Mobil pay - 133565 or Danske Bank reg 4720 kt 4720758679</align></p></p>
         </body>
         </html>
@@ -234,11 +234,11 @@ def german_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_
 
 def send_german_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer,
                                    checkin_date, checkout_date, text_sing, text_bf, text_bed,
-                                   text_free, pris_tot, email_address, telefon):
+                                   text_free, pris_tot, text_price, email_address, telefon):
     logo_cid = make_msgid()
     html_content = german_email_html_template(logo_cid[1:-1], navn, num_rooms, num_personer, checkin_date,
                                               checkout_date, text_sing, text_bf, text_bed, text_free, pris_tot,
-                                              email_address, telefon)
+                                              text_price, email_address, telefon)
     # construct email
     email = EmailMessage()
 

@@ -4,7 +4,8 @@ import pandas as pd
 from datetime import datetime, date
 from pathlib import Path
 import numpy as np
-from confirmation_email import (admin_email, send_danish_confirmation_email, send_german_confirmation_email)
+from confirmation_email import (admin_email, send_danish_confirmation_email, send_english_confirmation_email,
+                                send_german_confirmation_email)
 from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
 import base64
@@ -77,7 +78,7 @@ if sprog == "english":
     if enkelt:
         text_sing = "The room is used as a singleroom "
     else:
-        text_sing = ""
+        text_sing = " "
     mad = st.checkbox("breakfirst during you stay ")
     if mad:
         text_bf = "Breakfirst is included "
@@ -89,7 +90,7 @@ if sprog == "english":
     num_rooms = st.number_input("Number of rooms in total: ", value=1, step=1)
     num_personer = st.number_input("Number of persons in total: ", value=2, step=1)
 
-    st.text(" Hammerknuden offers dobbeltbed og singles on demand: ")
+    st.text(" Hammerknuden offers dobbeltbed or singles on demand: ")
     seng = st.selectbox("type af seng", options=["dobbeltbed", "singlebeds"])
     if seng == "dobbeltbed":
         text_bed = "Your choise is dobbetbed "
@@ -127,7 +128,7 @@ if sprog == "Deutsch":
     else:
         text_bf = "Frûstuck sind nicht inkluderet"
 
-    st.text("Der kan bo 2 personer i hvert rum ")
+    st.text("Jedes Zimmer bietet Platz für 2 Personen ")
 
     num_rooms = st.number_input("Gesamtzahl der Zimmer:", value=1, step=1)
     num_personer = st.number_input("Gesamtzahl der Gäste:", value=2, step=1)
