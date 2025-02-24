@@ -64,7 +64,6 @@ def danish_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_
             <hr>          
                 
                 <p> Opholdet er foreløbigt beregnet til {pris_tot:.2f}kr inklusiv 5% onlinerabat.
-                <p> {text_price}
             <hr>
                 <p> kontaktoplysninger: <BR>
                 Mail {email_address} <BR>
