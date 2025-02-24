@@ -232,6 +232,7 @@ elif sprog == "Deutsch" and booking_submitted:
     send_german_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer, checkin_date,
                                    checkout_date, text_sing, text_bf, text_bed, text_free, pris_tot, email_address,
                                    telefon)
+    st.markdown('Die Anfrage wurde gesendet. Dieses Fenster kann geschlossen werden')
 
 else:
     st.markdown('forespørgelsen ikke sendt, sendt mail direkte til mail@hammerknuden.dk')
