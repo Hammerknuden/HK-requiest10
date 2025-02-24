@@ -207,6 +207,8 @@ st.markdown(f"**Foreløbig pris denne reservation med 5 % online rabat** {pris_t
 print(days.days)
 print(pris_tot)
 
+text_price = f"Den foreløbige pris for denne resservation er {pris_tot:.2f} kr inklusive 5% online rabat"
+
 
 to_addr = [email_address, admin_email]  #'finnjorg@gmail.com'   #[admin_email]  #email'finnjorg@mail.dk'
 
@@ -215,8 +217,8 @@ booking_submitted = st.button("Send forespørgelse")
 
 if sprog == "dansk" and booking_submitted:
     send_danish_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer, checkin_date,
-                                   checkout_date, text_sing, text_bf, text_bed, text_free, pris_tot, email_address,
-                                   telefon)
+                                   checkout_date, text_sing, text_bf, text_bed, text_free, pris_tot, text_price,
+                                   email_address, telefon)
     st.markdown('forespørgelse er afsendt dette vindue kan lukkes')
 
 elif sprog == "english" and booking_submitted:
