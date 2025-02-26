@@ -64,11 +64,11 @@ if sprog == "english":
     st.text("Send a booking booking requiest to Hammerknuden Sommerpension")
     st.text("Your inquiry will normaly be answered within 12 hours")
 
-    st.text("Kontaktoplysninger")
+    st.text("Your contact informations ")
 
     navn = st.text_input("name  ")
-    telefon = st.text_input("Telefonnummer with prefix (+45...  ")
-    email_address = st.text_input("Your mail adresse you@domain.dk  ")
+    telefon = st.text_input("Telephonenummer with prefix (+45...  ")
+    email_address = st.text_input("Your mail address you@domain.dk  ")
 
     st.subheader("What do you need ??  ")
     checkin_date = st.date_input("Arrival date: ")
@@ -79,13 +79,13 @@ if sprog == "english":
         text_sing = "The room is used as a singleroom "
     else:
         text_sing = " "
-    mad = st.checkbox("breakfirst during you stay ")
+    mad = st.checkbox("Breakfirst during you stay ")
     if mad:
         text_bf = "Breakfirst is included "
     else:
         text_bf = "Breakfirst is not included "
 
-    st.text("There are room for two persons in each room  ")
+    st.text("There are space for two persons in each room  ")
 
     num_rooms = st.number_input("Number of rooms in total: ", value=1, step=1)
     num_personer = st.number_input("Number of persons in total: ", value=2, step=1)
@@ -106,7 +106,7 @@ if sprog == "Deutsch":
     st.text("Anfrage des reservation für Hammerknuden Sommerpension")
     st.text("Eiene anfrage wurde won 12 stunde anworted werden")
 
-    st.text("Kontakt")
+    st.text("Ihren Kontakt information")
 
     navn = st.text_input("name  ")
     telefon = st.text_input("Telefonnummer  ")
@@ -116,7 +116,7 @@ if sprog == "Deutsch":
     checkin_date = st.date_input("ankomst dato: ")
     checkout_date = st.date_input("abrejse dato: ")
 
-    enkelt = st.checkbox("Einzelzimmer erwünscht ( 1 person )  ")
+    enkelt = st.checkbox("Einzelzimmer erwünscht ( für 1 person )  ")
     if enkelt:
         text_sing = "Das Doppelzimmer wird als Einzelzimmer genutzt "
     else:
