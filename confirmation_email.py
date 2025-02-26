@@ -232,9 +232,9 @@ def german_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_
     """
 
 
-def send_german_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer,
-                                   checkin_date, checkout_date, text_sing, text_bf, text_bed,
-                                   text_free, pris_tot, text_price, email_address, telefon):
+def send_german_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer, checkin_date,
+                                   checkout_date, text_sing, text_bf, text_bed, text_free, pris_tot, text_price,
+                                   email_address, telefon):
     logo_cid = make_msgid()
     html_content = german_email_html_template(logo_cid[1:-1], navn, num_rooms, num_personer, checkin_date,
                                               checkout_date, text_sing, text_bf, text_bed, text_free, pris_tot,

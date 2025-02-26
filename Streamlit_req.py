@@ -15,7 +15,7 @@ st.title("**HAMMERKNUDEN SOMMERPENSION**")
 
 st.image("logo2.jpg")
 
-sprog = st.selectbox("Vælg sprog, Select language, Wählen Sie Sprache aus", options=["dansk", "english", "Deutsch"])
+sprog = st.selectbox("Vælg sprog, Select language, Wählen Sie Sprache aus", options=["dansk", "english", "deutsch"])
 
 if sprog == "dansk":
     st.text("Send en booking forespørgelse til Hammerknuden Sommerpension")
@@ -228,7 +228,7 @@ elif sprog == "english" and booking_submitted:
                                     email_address, telefon)
     st.markdown('Your request has been send, this window can be closed')
 
-elif sprog == "Deutsch" and booking_submitted:
+elif sprog == "deutsch" and booking_submitted:
     send_german_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer, checkin_date,
                                    checkout_date, text_sing, text_bf, text_bed, text_free, pris_tot, text_price,
                                    email_address, telefon)
