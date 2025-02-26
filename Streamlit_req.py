@@ -116,11 +116,11 @@ if sprog == "Deutsch":
     checkin_date = st.date_input("ankomst dato: ")
     checkout_date = st.date_input("abrejse dato: ")
 
-    enkelt = st.checkbox("Einzelzimmer erwünscht ( für 1 person )  ")
+    enkelt = st.checkbox("Einzelzimmer erwünscht 'für 1 person'  ")
     if enkelt:
         text_sing = "Das Doppelzimmer wird als Einzelzimmer genutzt "
     else:
-        text_sing = " "
+        text_sing = " - "
 
     mad = st.checkbox("Während des Aufenthalts wird Frühstück verlangt")
     if mad:
