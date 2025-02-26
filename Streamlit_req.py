@@ -144,7 +144,9 @@ if sprog == "Deutsch":
         text_free = st.text_input("Schriben sie bitte  ")
     else:
         text_free = st.text_input(" ")
+
 # calculations and data
+
 if enkelt:
     high_season_price = 950  # 2025 950
     low_season_price = 830  # 2025 830
