@@ -61,7 +61,7 @@ if sprog == "dansk":
         text_free = st.text_input(" ")
 
 if sprog == "english":
-    st.text("Send a booking booking requiest to Hammerknuden Sommerpension")
+    st.text("Send a booking requiest to Hammerknuden Sommerpension")
     st.text("Your inquiry will normaly be answered within 12 hours")
 
     st.text("Your contact informations ")
@@ -91,7 +91,7 @@ if sprog == "english":
     num_personer = st.number_input("Number of persons in total: ", value=2, step=1)
 
     st.text(" Hammerknuden offers dobbeltbed or singles on demand: ")
-    seng = st.selectbox("type af seng", options=["dobbeltbed", "singlebeds"])
+    seng = st.selectbox("typeof bed ", options=["dobbeltbed", "singlebeds"])
     if seng == "dobbeltbed":
         text_bed = "Your choise is dobbetbed "
     else:
