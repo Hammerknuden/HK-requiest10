@@ -224,14 +224,14 @@ if sprog == "dansk" and booking_submitted:
 
 elif sprog == "english" and booking_submitted:
     send_english_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer, checkin_date,
-                                    checkout_date, text_sing, text_bf, text_bed, text_free, pris_tot, email_address,
-                                    telefon)
+                                    checkout_date, text_sing, text_bf, text_bed, text_free, pris_tot, text_price,
+                                    email_address, telefon)
     st.markdown('Your request has been send, this window can be closed')
 
 elif sprog == "Deutsch" and booking_submitted:
     send_german_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer, checkin_date,
-                                   checkout_date, text_sing, text_bf, text_bed, text_free, pris_tot, email_address,
-                                   telefon)
+                                   checkout_date, text_sing, text_bf, text_bed, text_free, pris_tot, text_price,
+                                   email_address, telefon)
     st.markdown('Die Anfrage wurde gesendet. Dieses Fenster kann geschlossen werden')
 
 else:
