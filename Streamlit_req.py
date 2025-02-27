@@ -79,6 +79,7 @@ if sprog == "english":
         text_sing = "The room is used as a singleroom "
     else:
         text_sing = " "
+
     mad = st.checkbox("Breakfirst during you stay ")
     if mad:
         text_bf = "Breakfirst is included "
