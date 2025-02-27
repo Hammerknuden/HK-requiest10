@@ -205,7 +205,7 @@ print(rabat_t)
 #st.markdown(rabat_t)
 
 pris_tot = pris + bf_t - rabat_t
-if sprog == "danish":
+if sprog == "dansk":
     st.markdown(f"**Antal Dage i denne booking**, {days.days}")
     st.markdown(f"**Foreløbig pris denne reservation med 5 % online rabat** {pris_tot:.2f} kr")
 
