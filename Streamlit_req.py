@@ -205,8 +205,18 @@ print(rabat_t)
 #st.markdown(rabat_t)
 
 pris_tot = pris + bf_t - rabat_t
-st.markdown(f"**Antal Dage i denne booking**, {days.days}")
-st.markdown(f"**Foreløbig pris denne reservation med 5 % online rabat** {pris_tot:.2f}kr")
+if sprog == "danish":
+    st.markdown(f"**Antal Dage i denne booking**, {days.days}")
+    st.markdown(f"**Foreløbig pris denne reservation med 5 % online rabat** {pris_tot:.2f} kr")
+
+elif sprog == "english":
+    st.markdown(f"**Total numbers of days**, {days.days}")
+    st.markdown(f"**Estimated price inclusive 5% online dicount** {pris_tot:.2f} kr")
+
+elif sprog == "deutsch":
+    st.markdown(f"**Tages des reservation**, {days.days} Tage")
+    st.markdown(f"**Vorläufig berechneter Preis für den Aufenthalt inklusive 5 % Online-Rabatt** {pris_tot:.2f} kr")
+
 print(days.days)
 print(pris_tot)
 
@@ -216,7 +226,7 @@ text_price = f"Den foreløbige pris for denne resservation er {pris_tot:.2f} kr 
 to_addr = [email_address, admin_email]  #'finnjorg@gmail.com'   #[admin_email]  #email'finnjorg@mail.dk'
 
 confirmation_password = "pc0012hk"  #st.text_input("pc0012hk") #Pc2024Bonv
-booking_submitted = st.button("Send forespørgelse")
+booking_submitted = st.button("Send")
 
 if sprog == "dansk" and booking_submitted:
     send_danish_confirmation_email(to_addr, confirmation_password, navn, num_rooms, num_personer, checkin_date,
