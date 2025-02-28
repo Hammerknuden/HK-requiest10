@@ -160,7 +160,7 @@ print(high_season_price)
 print(low_season_price)
 #st.markdown(high_season_price)
 #st.markdown(low_season_price)
-
+print(single_room)
 bf_price = 100
 rabat = 5 #online rabat sat til 5%
 
@@ -248,7 +248,7 @@ elif sprog == "deutsch" and booking_submitted:
     st.markdown('Die Anfrage wurde gesendet. Dieses Fenster kann geschlossen werden')
 
 else:
-    st.markdown('forespørgelsen ikke sendt, sendt mail direkte til mail@hammerknuden.dk')
+    st.markdown('forespørgelsen ikke sendt, send mail direkte til mail@hammerknuden.dk')
 
 
 
