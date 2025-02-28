@@ -121,14 +121,14 @@ def english_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin
             Thank you for you interest in staying af Hammerknuden, we have recieved the following request for 
             <b>{navn}</b> 
             </p>
-            <p>The total nummer of rooms {num_rooms} Dobbelt værelse med bath, kitchenette and terrasse for  
-            {num_personer} personer. </p>
+            <p>The total nummer of rooms {num_rooms} Dobbelt room with bath, kitchenette and terrasse for  
+            {num_personer} persons. </p>
 
             <hr>
             <p>Inncheck on the<span style="padding-left:3em"><b> {checkin_date}</b></span></p>
             <p>Checkout on the<span style="padding-left:4em"><b> {checkout_date}</b></span></p>
             <hr>
-            <p>Indcheck is from kl. 14:30 on date of arrivel og Checkout before kl. 10:00, other after agreement</p>
+            <p>Indcheck is from kl. 14:30 on date of arrivel og Checkout before kl. 10:00, other after agreement only</p>
             <hr>
             <table>
                 <tr>
@@ -198,7 +198,7 @@ def german_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_
             Vielen Dank für Ihr Interesse an einem Urlaub in Hammerknuden, Folgende Wünsche haben wir notiert 
             <b>{navn}</b> 
             </p>
-            <p>Der ønskes {num_rooms} Doppelzimmer, Ed bad, kochnische und Terrasse für  
+            <p>Die wunchen {num_rooms} Doppelzimmer, Ed bad, kochnische und Terrasse für  
             {num_personer} Gäste. </p>
 
             <hr>
