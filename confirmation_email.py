@@ -63,7 +63,7 @@ def danish_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_
                 </tr>
             <hr>          
                 
-                <p> Opholdet er foreløbigt beregnet til {pris_tot:.2f}kr inklusiv 5% onlinerabat.
+                <p> Opholdet er foreløbigt beregnet til {pris_tot:.2f} kr inklusiv 5% onlinerabat.
             <hr>
                 <p> kontaktoplysninger: <BR>
                 Mail {email_address} <BR>
@@ -140,7 +140,7 @@ def english_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin
                 </tr>
             <hr>          
 
-                <p> Estimated price is calculated to {pris_tot:.2f}kr inclusiv 5% online-discount.
+                <p> Estimated price is calculated to {pris_tot:.2f} kr inclusiv 5% online-discount.
             <hr>
                 <p> Your Contact information:<BR>
                 Email : {email_address} <BR>
@@ -195,7 +195,7 @@ def german_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_
             <img src ="cid:{logo_cid}" alt=logo width="300"/>
             </p>
             <p>
-            Vielen Dank für Ihr Interesse an einem Urlaub in Hammerknuden, Folgende Wünsche haben wir notiert 
+            Vielen Dank für Ihr Interesse an einem Urlaub in Hammerknuden, Folgende Wünsche haben wir notiert für
             <b>{navn}</b> 
             </p>
             <p>Die wunchen {num_rooms} Doppelzimmer, Ed bad, kochnische und Terrasse für  
@@ -210,6 +210,7 @@ def german_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_
             <hr>
             <table>
                 <tr>
+                    <P>{text_sing}</p>
                     <p>{text_bf}</p>
                     <p> {text_bed} </p>
                     <p>{text_free} </p<
