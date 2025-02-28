@@ -110,7 +110,7 @@ if sprog == "deutsch":
     st.text("Ihren Kontakt information")
 
     navn = st.text_input("name  ")
-    telefon = st.text_input("Telefonnummer  ")
+    telefon = st.text_input("Telefonnummer (mit prefix +49...) ")
     email_address = st.text_input("Email adresse you@domain.de  ")
 
     st.subheader("Welche Termine wünschen Sie? ??  ")
