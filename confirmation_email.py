@@ -135,7 +135,7 @@ def english_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin
                     <p>{text_sing}</p>
                     <p>{text_bf}</p>
                     <p> {text_bed} </p>
-                    <p>{text_free} </p<
+                    <p>{text_free} </p>
                     <td><span style=float:right> -- </style></td>
                 </tr>
             <hr>          
@@ -213,7 +213,7 @@ def german_email_html_template(logo_cid, navn, num_rooms, num_personer, checkin_
                     <P>{text_sing}</p>
                     <p>{text_bf}</p>
                     <p> {text_bed} </p>
-                    <p>{text_free} </p<
+                    <p>{text_free} </p>
                     <td><span style=float:right> -- </style></td>
                 </tr>
             <hr>          
