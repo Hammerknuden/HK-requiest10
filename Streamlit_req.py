@@ -52,7 +52,9 @@ if sprog == "dansk":
     elif enkelt and num_rooms == 2:
         num_personer = 2
         st.markdown("Antal gæster ialt 2 ")
-
+    elif enkelt and num_rooms == 3:
+        num_personer = 3
+        st.markdown("Antal gæster ialt 3 ")
     else:
         num_personer = st.number_input("Antal gæster ialt:", value=2, step=1)
     st.text("Hvis der ønskes en kombination af enkelt og dobbeltværelser, indsend 2 formularer ")
@@ -104,6 +106,9 @@ if sprog == "english":
     elif enkelt and num_rooms == 2:
         num_personer = 2
         st.markdown("Total number of guests 2 ")
+    elif enkelt and num_rooms == 3:
+        num_personer = 3
+        st.markdown("Total number of guests 3 ")
     else:
         num_personer = st.number_input("Number of guests in total: ", value=2, step=1)
     st.text(" If a combination of single and dobbelt romms are desired, pls send 2 formulars ")
@@ -156,6 +161,9 @@ if sprog == "deutsch":
     elif enkelt and num_rooms == 2:
         num_personer = 2
         st.markdown("Gesamtzahl der Gäste 2 ")
+    elif enkelt and num_rooms == 3:
+        num_personer = 3
+        st.markdown("Gesamtzahl der Gäste 3 ")
     else:
         num_personer = st.number_input("Gesamtzahl der Gäste:", value=2, step=1)
     st.text("Wunchen sie eine kombination von Einzel und Doppelt zimmer, bitte send 2 formulare ")
