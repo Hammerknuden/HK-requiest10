@@ -31,7 +31,7 @@ if sprog == "dansk":
     checkin_date = st.date_input("ønsket ankomst dato: ")
     checkout_date = st.date_input("ønsket afrejse dato: ")
 
-    enkelt = st.checkbox("ønskes enkeltværelse ( 1 person )  ")
+    enkelt = st.checkbox("ønskes enkeltværelse ( 1 person pr værelse )  ")
     if enkelt:
         text_sing = "dobbeltværelse ønskes anvendt som enkeltværelse"
     else:
@@ -46,8 +46,16 @@ if sprog == "dansk":
     st.text("Der kan bo 2 personer i hvert rum ")
 
     num_rooms = st.number_input("antal væreser i alt:", value=1, step=1)
-    num_personer = st.number_input("Antal personer ialt:", value=2, step=1)
+    if enkelt and num_rooms == 1:
+        num_personer = 1
+        st.markdown("Antal gæster ialt 1 ")
+    elif enkelt and num_rooms == 2:
+        num_personer = 2
+        st.markdown("Antal gæster ialt 2 ")
 
+    else:
+        num_personer = st.number_input("Antal gæster ialt:", value=2, step=1)
+    st.text("Hvis der ønskes en kombination af enkelt og dobbeltværelser, indsend 2 formularer ")
     st.text(" Hammerknuden kan tilbyde enten dobbeltseng eller enkeltsenge efter ønske")
     seng = st.selectbox("type af seng", options=["dobbeltseng", "enkeltsenge"])
     if seng == "dobbeltseng":
@@ -58,7 +66,7 @@ if sprog == "dansk":
     if extext:
         text_free = st.text_input("Skriv ønsker eller yderligere information  ")
     else:
-        text_free = st.text_input(" ")
+        text_free = st.text(" ")
 
 if sprog == "english":
     st.text("Send a booking requiest to Hammerknuden Sommerpension")
@@ -89,7 +97,16 @@ if sprog == "english":
     st.text("There are space for two persons in each room  ")
 
     num_rooms = st.number_input("Number of rooms in total: ", value=1, step=1)
-    num_personer = st.number_input("Number of persons in total: ", value=2, step=1)
+
+    if enkelt and num_rooms == 1:
+        num_personer = 1
+        st.markdown("Total number og guests 1 ")
+    elif enkelt and num_rooms == 2:
+        num_personer = 2
+        st.markdown("Total number of guests 2 ")
+    else:
+        num_personer = st.number_input("Number of guests in total: ", value=2, step=1)
+    st.text(" If a combination of single and dobbelt romms are desired, pls send 2 formulars ")
 
     st.text(" Hammerknuden offers dobbeltbed or singles on demand: ")
     seng = st.selectbox("typeof bed ", options=["dobbeltbed", "singlebeds"])
@@ -101,7 +118,7 @@ if sprog == "english":
     if extext:
         text_free = st.text_input("just start writing  ")
     else:
-        text_free = st.text_input(" ")
+        text_free = st.text(" ")
 
 if sprog == "deutsch":
     st.text("Anfrage des reservation für Hammerknuden Sommerpension")
@@ -132,10 +149,19 @@ if sprog == "deutsch":
     st.text("Jedes Zimmer bietet Platz für 2 Personen ")
 
     num_rooms = st.number_input("Gesamtzahl der Zimmer:", value=1, step=1)
-    num_personer = st.number_input("Gesamtzahl der Gäste:", value=2, step=1)
+
+    if enkelt and num_rooms == 1:
+        num_personer = 1
+        st.markdown("Gesamtzahl der Gäste 1 ")
+    elif enkelt and num_rooms == 2:
+        num_personer = 2
+        st.markdown("Gesamtzahl der Gäste 2 ")
+    else:
+        num_personer = st.number_input("Gesamtzahl der Gäste:", value=2, step=1)
+    st.text("Wunchen sie eine kombination von Einzel und Doppelt zimmer, bitte send 2 formulare ")
 
     st.text(" Hammerknuden kann je nach Wunsch entweder ein Doppelbett oder Einzelbetten anbieten")
-    seng = st.selectbox("type af seng", options=["doppelbett", "Einzelbettene"])
+    seng = st.selectbox("Betttyp auswählen", options=["doppelbett", "Einzelbettene"])
     if seng == "dobbeltseng":
         text_bed = "Sie haben sich für ein Doppelbett Entschieden "
     else:
@@ -144,7 +170,7 @@ if sprog == "deutsch":
     if extext:
         text_free = st.text_input("Schriben sie bitte  ")
     else:
-        text_free = st.text_input(" ")
+        text_free = st.text(" ")
 
 # calculations and data
 
