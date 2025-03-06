@@ -23,21 +23,21 @@ if sprog == "dansk":
 
     st.text("Kontaktoplysninger")
 
-    navn = st.text_input("navn  ")
+    navn = st.text_input("Navn  ")
     telefon = st.text_input("Telefonnummer  ")
     email_address = st.text_input("Email adresse you@domain.dk  ")
 
     st.subheader("Hvilke ønsker har du/I ??  ")
-    checkin_date = st.date_input("ønsket ankomst dato: ")
-    checkout_date = st.date_input("ønsket afrejse dato: ")
+    checkin_date = st.date_input("Ønsket ankomst dato: ")
+    checkout_date = st.date_input("Ønsket afrejse dato: ")
 
-    enkelt = st.checkbox("ønskes enkeltværelse ( 1 person pr værelse )  ")
+    enkelt = st.checkbox("Enkeltværelse ønskes  ( 1 person pr værelse )  ")
     if enkelt:
-        text_sing = "dobbeltværelse ønskes anvendt som enkeltværelse"
+        text_sing = "Dobbeltværelse ønskes anvendt som enkeltværelse"
     else:
-        text_sing = ""
+        text_sing = " "
 
-    mad = st.checkbox("ønskes morgenmad under opholdet")
+    mad = st.checkbox("Morgenmad under opholdet ønskes")
     if mad:
         text_bf = "Morgenmad er inkluderet"
     else:
@@ -45,7 +45,7 @@ if sprog == "dansk":
 
     st.text("Der kan bo 2 personer i hvert rum ")
 
-    num_rooms = st.number_input("antal væreser i alt:", value=1, step=1)
+    num_rooms = st.number_input("Antal værelser i alt:", value=1, step=1)
     if enkelt and num_rooms == 1:
         num_personer = 1
         st.markdown("Antal gæster ialt 1 ")
@@ -55,9 +55,14 @@ if sprog == "dansk":
     elif enkelt and num_rooms == 3:
         num_personer = 3
         st.markdown("Antal gæster ialt 3 ")
+    elif enkelt and num_rooms == 4:
+        num_personer = 4
+        st.markdown("Antal gæster ialt 4 ")
     else:
         num_personer = st.number_input("Antal gæster ialt:", value=2, step=1)
+
     st.text("Hvis der ønskes en kombination af enkelt og dobbeltværelser, indsend 2 formularer ")
+
     st.text(" Hammerknuden kan tilbyde enten dobbeltseng eller enkeltsenge efter ønske")
     seng = st.selectbox("type af seng", options=["dobbeltseng", "enkeltsenge"])
     if seng == "dobbeltseng":
@@ -76,11 +81,11 @@ if sprog == "english":
 
     st.text("Your contact informations ")
 
-    navn = st.text_input("name  ")
+    navn = st.text_input("Name  ")
     telefon = st.text_input("Telephonenummer with prefix (+45...  ")
     email_address = st.text_input("Your mail address you@domain.dk  ")
 
-    st.subheader("What do you need ??  ")
+    st.subheader("When would you like to stay ??  ")
     checkin_date = st.date_input("Arrival date: ")
     checkout_date = st.date_input("Departure date: ")
 
@@ -109,9 +114,14 @@ if sprog == "english":
     elif enkelt and num_rooms == 3:
         num_personer = 3
         st.markdown("Total number of guests 3 ")
+    elif enkelt and num_rooms == 4:
+        num_personer = 4
+        st.markdown("Total number of guests 4")
+
     else:
         num_personer = st.number_input("Number of guests in total: ", value=2, step=1)
-    st.text(" If a combination of single and dobbelt romms are desired, pls send 2 formulars ")
+
+    st.text(" If a combination of single and dobbelt romms are desired, pls. send 2 formulars ")
 
     st.text(" Hammerknuden offers dobbeltbed or singles on demand: ")
     seng = st.selectbox("typeof bed ", options=["dobbeltbed", "singlebeds"])
@@ -131,7 +141,7 @@ if sprog == "deutsch":
 
     st.text("Ihren Kontakt information")
 
-    navn = st.text_input("name  ")
+    navn = st.text_input("Name  ")
     telefon = st.text_input("Telefonnummer (mit prefix +49...) ")
     email_address = st.text_input("Email adresse you@domain.de  ")
 
@@ -139,7 +149,7 @@ if sprog == "deutsch":
     checkin_date = st.date_input("ankomst dato: ")
     checkout_date = st.date_input("abrejse dato: ")
 
-    enkelt = st.checkbox("Einzelzimmer erwünscht 'für 1 person'  ")
+    enkelt = st.checkbox("Einzelzimmer erwünscht (für 1 person)  ")
     if enkelt:
         text_sing = "Das Doppelzimmer wird als Einzelzimmer genutzt "
     else:
@@ -164,8 +174,12 @@ if sprog == "deutsch":
     elif enkelt and num_rooms == 3:
         num_personer = 3
         st.markdown("Gesamtzahl der Gäste 3 ")
+    elif enkelt and num_rooms == 4:
+        num_personer = 4
+        st.markdown("Gesamtzahl der Gäste 4 ")
     else:
         num_personer = st.number_input("Gesamtzahl der Gäste:", value=2, step=1)
+
     st.text("Wunchen sie eine kombination von Einzel und Doppelt zimmer, bitte send 2 formulare ")
 
     st.text(" Hammerknuden kann je nach Wunsch entweder ein Doppelbett oder Einzelbetten anbieten")
