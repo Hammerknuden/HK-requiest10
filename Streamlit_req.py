@@ -192,7 +192,7 @@ if sprog == "deutsch":
     if extext:
         text_free = st.text_input("Schriben sie bitte  ")
     else:
-        text_free = st.text(" ")
+        text_free = " "
 
 # calculations and data
 
