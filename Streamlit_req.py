@@ -73,7 +73,7 @@ if sprog == "dansk":
     if extext:
         text_free = st.text_input("Skriv ønsker eller yderligere information  ")
     else:
-        text_free = st.text(" ")
+        text_free = " "
 
 if sprog == "english":
     st.text("Send a booking requiest to Hammerknuden Sommerpension")
