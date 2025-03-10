@@ -133,7 +133,7 @@ if sprog == "english":
     if extext:
         text_free = st.text_input("just start writing  ")
     else:
-        text_free = st.text(" ")
+        text_free = " "
 
 if sprog == "deutsch":
     st.text("Anfrage des reservation für Hammerknuden Sommerpension")
